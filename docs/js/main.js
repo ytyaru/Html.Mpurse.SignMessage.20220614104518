@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', async(event) => {
           .on('stateChanged', isUnlocked => console.log(isUnlocked))
           .on('addressChanged', async(address) => await setAddress(address));
     } catch(e) { console.error(e) }
-    document.getElementById('sign').addEventListener('click', (event) => {
+    document.getElementById('sign').addEventListener('click', async(event) => {
         const signature = await window.mpurse.signMessage(document.getElementById('sign-message').value)
         console.debug('signature:', signature)
         document.getElementById('signature').innerText = signature 

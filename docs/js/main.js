@@ -6,7 +6,8 @@ window.addEventListener('DOMContentLoaded', async(event) => {
           .on('addressChanged', async(address) => await setAddress(address));
     } catch(e) { console.error(e) }
     document.getElementById('sign').addEventListener('click', (event) => {
-        const signature = window.mpurse.signMessage(document.getElementById('sign-message').value)
+        const signature = await window.mpurse.signMessage(document.getElementById('sign-message').value)
+        console.debug('signature:', signature)
         document.getElementById('signature').innerText = signature 
     })
     async function setAddress(address=null) {
